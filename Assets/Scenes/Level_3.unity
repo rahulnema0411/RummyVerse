@@ -1055,7 +1055,10 @@ MonoBehaviour:
   coins: {fileID: 1016713030}
   keys: {fileID: 341943255}
   healthIcon: {fileID: 205835283}
-  heartCollection: {fileID: 11400000, guid: 38794a6808b7947d584285f47f4fb7b8, type: 2}
+  heartCollection:
+  - {fileID: 21300000, guid: fdeb440bb560e47c6a378bfd3b7b9a93, type: 3}
+  - {fileID: 21300000, guid: a88d812d350d544418d85eabeae1f84a, type: 3}
+  - {fileID: 21300000, guid: e6e946f8cc51644688dca67039eef04c, type: 3}
 --- !u!1 &452633176
 GameObject:
   m_ObjectHideFlags: 0

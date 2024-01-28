@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coins;
     [SerializeField] private TextMeshProUGUI keys;
     [SerializeField] private Image healthIcon;
-    [SerializeField] private ImageCollection heartCollection;
+    [SerializeField] private List<Sprite> heartCollection;
 
     private void OnEnable()
     {
@@ -19,13 +20,14 @@ public class HUDController : MonoBehaviour
 
     private void UpdateHealth(object sender, int e)
     {
-        healthIcon.sprite = heartCollection.sprites[e];
+        healthIcon.sprite = heartCollection[e];
     }
 
     private void OnDisable()
     {
         LevelManager.UpdateCoinsEvent -= UpdateCoins;
         LevelManager.UpdateKeyEvent -= UpdateKeys;
+        Player.HitEvent -= UpdateHealth;
     }
 
     private void UpdateCoins()
