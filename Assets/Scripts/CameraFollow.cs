@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (player != null)
         {
-            Vector3 targetPosition = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z);
+            Vector3 targetPosition = new Vector3(player.position.x + offset.x, 0, offset.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5f);
         }
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-interface IState
+public interface IState
 {
     void Enter();
     void Update();
@@ -103,5 +103,37 @@ class RunState : IState
     public void Exit()
     {
         player.Animator.SetTrigger("Idle");
+    }
+}
+
+class JumpState : IState
+{
+
+    private Player player;
+    private float jumpForce;
+
+    public JumpState(Player player, float jumpForce)
+    {
+        this.player = player;
+        this.jumpForce = jumpForce;
+    }
+
+    public void Enter()
+    {
+        player.Animator.SetTrigger("Jump");
+        player.Body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    public void Exit()
+    {
+        player.Animator.SetTrigger("Idle");
+    }
+
+    public void Update()
+    {
+        if(player.Body.velocity.y == 0)
+        {
+            player.TransitionToState(new IdleState(player));
+        }
     }
 }
