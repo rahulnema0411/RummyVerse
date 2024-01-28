@@ -111,11 +111,13 @@ class JumpState : IState
 
     private Player player;
     private float jumpForce;
+    private float speed;
 
-    public JumpState(Player player, float jumpForce)
+    public JumpState(Player player, float jumpForce, float speed)
     {
         this.player = player;
         this.jumpForce = jumpForce;
+        this.speed = speed;
     }
 
     public void Enter()
@@ -135,5 +137,17 @@ class JumpState : IState
         {
             player.TransitionToState(new IdleState(player));
         }
+
+        float horizontal = Input.GetAxis("Horizontal");
+
+        if (horizontal >= 0f)
+        {
+            player.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            player.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        player.transform.Translate(new Vector3(horizontal * speed, 0, 0) * Time.deltaTime);
     }
 }

@@ -26,32 +26,42 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //run
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+
+
+        if(_currentState is IdleState)
         {
-            if(!(_currentState is RunState))
-            {  
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
                 TransitionToState(new RunState(this, RunSpeed));
             }
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+            {
+                TransitionToState(new JumpState(this, jumpForce, runSpeed));
+            }
         }
-        else
+
+        if(_currentState is RunState)
         {
-            if (_currentState is RunState)
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                _currentState.Update();
+            }
+            else
             {
                 TransitionToState(new IdleState(this));
             }
-        }
 
-        //jump
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!(_currentState is JumpState))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
             {
-                TransitionToState(new JumpState(this, jumpForce));
+                TransitionToState(new JumpState(this, jumpForce, runSpeed));
             }
         }
 
-        _currentState.Update();
+        if (_currentState is JumpState)
+        {
+            _currentState.Update();
+        }
+
     }
 
     public void Hurt()
