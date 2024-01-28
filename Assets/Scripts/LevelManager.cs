@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private HUDController _HUDController;
     [SerializeField] private GameOverController _gameOverController;
+    [SerializeField] private WinScreenController _winScreenController;
 
     private int coins;
     private bool keyCollected;
@@ -47,5 +48,11 @@ public class LevelManager : MonoBehaviour
     {
         _HUDController.Hide();
         _gameOverController.Show();
+    }
+
+    public void ShowWinScreen()
+    {
+        _HUDController.Hide();
+        _winScreenController.Show();
     }
 }
