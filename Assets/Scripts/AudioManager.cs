@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayLevelCompleteSound()
     {
-        soundEffectSource.PlayOneShot(levelCompleteSound);
+        backgroundMusicSource.PlayOneShot(levelCompleteSound);
     }
 
     public void PlayPlayerHurtSound()

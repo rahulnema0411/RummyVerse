@@ -4195,7 +4195,7 @@ PrefabInstance:
     - target: {fileID: 5483018835307346811, guid: 1dc7124ff4d0748728d7862c10c114c4, type: 3}
       propertyPath: playerHurtSound
       value: 
-      objectReference: {fileID: 8300000, guid: 60f3a3f2cec5e419e9a075d85de7d4a5, type: 3}
+      objectReference: {fileID: 8300000, guid: c64be9d1b68804390bd8470e0b64d73b, type: 3}
     - target: {fileID: 5483018835307346811, guid: 1dc7124ff4d0748728d7862c10c114c4, type: 3}
       propertyPath: keyCollectionSound
       value: 
